@@ -14,10 +14,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function HeroesList(props) {
-  useEffect(() => {
-    props.fetchHeroes()
-  }, [])
-
   const { heroes } = props
   const classes = useStyles()
 
@@ -38,10 +34,4 @@ const mapStateToProps = state => {
   return { heroes }
 }
 
-const mapDispatchToState = dispatch => {
-  return {
-    fetchHeroes: () => dispatch(FETCH_HEROES())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToState)(HeroesList)
+export default connect(mapStateToProps)(HeroesList)

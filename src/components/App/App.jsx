@@ -6,7 +6,7 @@ import * as ROUTES from '../../constants/routes'
 import LandingPage from '../LandingPage'
 import Alert from '../Alert'
 import { getAppMessage } from '../../store/selectors'
-import { SET_APP_MESSAGE } from '../../store/actions'
+import { SET_APP_MESSAGE, FETCH_HEROES } from '../../store/actions'
 
 function App(props) {
   const [openSnackBar, setOpenSnackBar] = useState(false)
@@ -14,6 +14,10 @@ function App(props) {
   const { appMessage } = props
   const { content: appMessageContent } = appMessage
 
+  useEffect(() => {
+    props.fetchHeroes()
+  }, [])
+  
   useEffect(() => {
     if (appMessageContent) {
       setOpenSnackBar(true)
@@ -31,7 +35,7 @@ function App(props) {
   return (
     <div>
       <Router>
-        <Route exact path={ROUTES.WELCOME} component={LandingPage} />
+        <Route path={ROUTES.WELCOME} component={LandingPage} />
       </Router>
       <Snackbar
         anchorOrigin={{
@@ -57,7 +61,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToState = dispatch => {
   return {
-    setAppMessage: message => dispatch(SET_APP_MESSAGE({ payload: message }))
+    setAppMessage: message => dispatch(SET_APP_MESSAGE({ payload: message })),
+    fetchHeroes: () => dispatch(FETCH_HEROES())
   }
 }
 

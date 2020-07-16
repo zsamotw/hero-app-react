@@ -39,10 +39,10 @@ function MenuAppBar() {
     setAnchorEl(event.currentTarget)
   }
 
-  // const handleNavigateAccount = () => {
-  //   history.push(ROUTES.HOME_ACCOUNT)
-  //   setAnchorEl(null)
-  // }
+  const handleNavigateHeroesList = () => {
+    history.push(ROUTES.WELCOME)
+    setAnchorEl(null)
+  }
 
   const handleClose = () => {
     setAnchorEl(null)
@@ -75,7 +75,7 @@ function MenuAppBar() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={null}>Heroes</MenuItem>
+              <MenuItem onClick={handleNavigateHeroesList}>Heroes</MenuItem>
               <MenuItem onClick={null}>My army</MenuItem>
             </Menu>
           </div>
