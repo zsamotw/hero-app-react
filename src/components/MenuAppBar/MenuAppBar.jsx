@@ -75,7 +75,7 @@ function MenuAppBar() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={null}>Heros</MenuItem>
+              <MenuItem onClick={null}>Heroes</MenuItem>
               <MenuItem onClick={null}>My army</MenuItem>
             </Menu>
           </div>

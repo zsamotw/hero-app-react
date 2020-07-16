@@ -1,0 +1,50 @@
+[
+  {
+    "id": "01",
+    "name": "Eryk",
+    "skill": "Chrysopoeia",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "photo": "http://source.unsplash.com/random/600x400?jedi",
+    "isSelected": false
+  },
+  {
+    "id": "02",
+    "name": "Eryk",
+    "skill": "Chrysopoeia",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "photo": "http://source.unsplash.com/random/600x400?jedi",
+    "isSelected": false
+  },
+  {
+    "id": "03",
+    "name": "Eryk",
+    "skill": "Chrysopoeia",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "photo": "http://source.unsplash.com/random/600x400?jedi",
+    "isSelected": false
+  },
+  {
+    "id": "04",
+    "name": "Eryk",
+    "skill": "Chrysopoeia",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "photo": "http://source.unsplash.com/random/600x400?jedi",
+    "isSelected": false
+  },
+  {
+    "id": "05",
+    "name": "Eryk",
+    "skill": "Chrysopoeia",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "photo": "http://source.unsplash.com/random/600x400?jedi",
+    "isSelected": false
+  },
+  {
+    "id": "06",
+    "name": "Eryk",
+    "skill": "Chrysopoeia",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "photo": "http://source.unsplash.com/random/600x400?jedi",
+    "isSelected": false
+  }
+]
