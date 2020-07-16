@@ -40,7 +40,12 @@ function MenuAppBar() {
   }
 
   const handleNavigateHeroesList = () => {
-    history.push(ROUTES.WELCOME)
+    history.push(ROUTES.HEROES)
+    setAnchorEl(null)
+  }
+
+  const handleNavigateArmyList = () => {
+    history.push(ROUTES.SELECTED)
     setAnchorEl(null)
   }
 
@@ -54,7 +59,7 @@ function MenuAppBar() {
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             <Link
-              to={ROUTES.WELCOME}
+              to={ROUTES.HEROES}
               style={{ textDecoration: 'none', color: '#fff' }}
             >
               Hero App
@@ -76,7 +81,7 @@ function MenuAppBar() {
               onClose={handleClose}
             >
               <MenuItem onClick={handleNavigateHeroesList}>Heroes</MenuItem>
-              <MenuItem onClick={null}>My army</MenuItem>
+              <MenuItem onClick={handleNavigateArmyList}>My army</MenuItem>
             </Menu>
           </div>
         </Toolbar>

@@ -35,7 +35,7 @@ function App(props) {
   return (
     <div>
       <Router>
-        <Route path={ROUTES.WELCOME} component={LandingPage} />
+        <Route path={ROUTES.HEROES} component={LandingPage} />
       </Router>
       <Snackbar
         anchorOrigin={{

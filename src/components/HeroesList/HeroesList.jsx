@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
-import { getHeroes } from '../../store/selectors'
+import { getHeroes, getSelectedHeroes } from '../../store/selectors'
 import { FETCH_HEROES } from '../../store/actions'
 import HeroCard from '../HeroCard/HeroCard'
 
@@ -14,15 +14,16 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function HeroesList(props) {
-  const { heroes } = props
+  const { heroes, selectedHeroes, onlySelected } = props
   const classes = useStyles()
+  const heroesToDisplay = onlySelected ? selectedHeroes : heroes
 
   return (
     <>
-      <h1>Heroes</h1>
+      <h1>{onlySelected ? 'Your army' : 'Heroes'}</h1>
       <div className={classes.heroesContainer}>
-        {heroes
-          ? heroes.map(hero => <HeroCard key={hero.id} hero={hero} />)
+        {heroesToDisplay
+          ? heroesToDisplay.map(hero => <HeroCard key={hero.id} hero={hero} />)
           : []}
       </div>
     </>
@@ -31,7 +32,8 @@ function HeroesList(props) {
 
 const mapStateToProps = state => {
   const heroes = getHeroes(state)
-  return { heroes }
+  const selectedHeroes = getSelectedHeroes(state)
+  return { heroes, selectedHeroes }
 }
 
 export default connect(mapStateToProps)(HeroesList)

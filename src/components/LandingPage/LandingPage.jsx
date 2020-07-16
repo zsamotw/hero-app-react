@@ -15,11 +15,14 @@ const LandingPage = () => {
         <Grid xs={1} />
         <Grid item xs={10}>
           <Switch>
+            <Route exact path="/selected">
+              <HeroesList onlySelected={true} />
+            </Route>
             <Route path="/:id">
               <HeroDetails />
             </Route>
             <Route exact path={path}>
-              <HeroesList />
+              <HeroesList onlySelected={false} />
             </Route>
           </Switch>
         </Grid>

@@ -3,6 +3,11 @@ export const getHeroes = state => {
   return heroes
 }
 
+export const getSelectedHeroes = state => {
+  const selectedHeroes = state.get('heroes').filter(hero => hero.isSelected)
+  return selectedHeroes
+}
+
 export const getCurrentHero = state => {
   const currentHero = state.get('currentHero')
   return currentHero

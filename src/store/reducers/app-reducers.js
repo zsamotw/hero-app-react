@@ -5,8 +5,7 @@ import {
   handleSetAppMessage,
   handleSetCurrentHero,
   handleDeleteHero,
-  handleRemoveHeroFromArmy,
-  handleAddHeroToArmy
+  handleHeroAction
 } from '../action-handlers'
 import {
   SET_APP_MESSAGE,
@@ -36,10 +35,10 @@ const appReducers = createReducer(initialState, {
     return handleDeleteHero(state, action.payload)
   },
   [REMOVE_HERO_FROM_ARMY.type]: (state, action) => {
-    return handleRemoveHeroFromArmy(state, action.payload)
+    return handleHeroAction(state, action.payload, 'remove')
   },
   [ADD_HERO_TO_ARMY.type]: (state, action) => {
-    return handleAddHeroToArmy(state, action.payload)
+    return handleHeroAction(state, action.payload, 'add')
   },
   [SET_APP_MESSAGE.type]: (state, action) => {
     return handleSetAppMessage(state, action.payload)

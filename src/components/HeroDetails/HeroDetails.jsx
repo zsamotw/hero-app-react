@@ -6,6 +6,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import { getCurrentHero } from '../../store/selectors'
+import NoContextData from '../NoContextData'
 import {
   SET_CURRENT_HERO,
   DELETE_HERO,
@@ -28,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row'
   },
   avatarContainer: {
-    width: '20%',
+    minWidth: '20%',
     display: 'flex',
     justifyContent: 'center'
   },
@@ -41,7 +42,12 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
     alignItems: 'center'
   },
+  buttonsContainer: {
+    display: 'flex',
+    alignItems: 'center'
+  },
   trashIcon: {
+    marginLeft: '30px',
     color: theme.palette.error.main,
     cursor: 'pointer'
   },
@@ -71,13 +77,15 @@ function HeroDetails(props) {
 
   const deleteHero = () => {
     props.deleteHero(id)
-    history.push(ROUTES.WELCOME)
+    history.push(ROUTES.HEROES)
   }
 
   const handleHeroAction = () => {
     if (hero.isSelected) props.removeHeroFromMyArmy(id)
     else props.addHeroToMyArmy(id)
   }
+
+  const handleClickBack = () => history.goBack()
 
   return (
     <>
@@ -94,10 +102,20 @@ function HeroDetails(props) {
             <div className={classes.heroDataContainer}>
               <div className={classes.heroNameContainer}>
                 <div className={classes.heroName}>{hero.name}</div>
-                <DeleteForeverIcon
-                  className={classes.trashIcon}
-                  onClick={deleteHero}
-                />
+                <div className={classes.buttonsContainer}>
+                  <Button
+                    onClick={handleClickBack}
+                    variant="outlined"
+                    color="secondary"
+                    size="small"
+                  >
+                    Back
+                  </Button>
+                  <DeleteForeverIcon
+                    className={classes.trashIcon}
+                    onClick={deleteHero}
+                  />
+                </div>
               </div>
               <div>
                 {hero.skill}
@@ -116,7 +134,7 @@ function HeroDetails(props) {
           </Button>
         </div>
       ) : (
-        <div>Oops .... No hero!</div>
+        <NoContextData />
       )}
     </>
   )
