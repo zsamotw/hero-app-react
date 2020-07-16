@@ -3,9 +3,19 @@ import { Record, List } from 'immutable'
 import {
   handleSetHeroes,
   handleSetAppMessage,
-  handleSetCurrentHero
+  handleSetCurrentHero,
+  handleDeleteHero,
+  handleRemoveHeroFromArmy,
+  handleAddHeroToArmy
 } from '../action-handlers'
-import { SET_APP_MESSAGE, SET_HEROES, SET_CURRENT_HERO } from '../actions'
+import {
+  SET_APP_MESSAGE,
+  SET_HEROES,
+  SET_CURRENT_HERO,
+  DELETE_HERO,
+  REMOVE_HERO_FROM_ARMY,
+  ADD_HERO_TO_ARMY
+} from '../actions'
 
 const makeInitialState = Record({
   heroes: List([]),
@@ -21,6 +31,15 @@ const appReducers = createReducer(initialState, {
   },
   [SET_CURRENT_HERO.type]: (state, action) => {
     return handleSetCurrentHero(state, action.payload)
+  },
+  [DELETE_HERO.type]: (state, action) => {
+    return handleDeleteHero(state, action.payload)
+  },
+  [REMOVE_HERO_FROM_ARMY.type]: (state, action) => {
+    return handleRemoveHeroFromArmy(state, action.payload)
+  },
+  [ADD_HERO_TO_ARMY.type]: (state, action) => {
+    return handleAddHeroToArmy(state, action.payload)
   },
   [SET_APP_MESSAGE.type]: (state, action) => {
     return handleSetAppMessage(state, action.payload)

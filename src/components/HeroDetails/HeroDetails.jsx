@@ -2,11 +2,17 @@ import React, { useEffect } from 'react'
 import Avatar from '@material-ui/core/Avatar'
 import { makeStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import { getCurrentHero } from '../../store/selectors'
-import { SET_CURRENT_HERO } from '../../store/actions'
+import {
+  SET_CURRENT_HERO,
+  DELETE_HERO,
+  REMOVE_HERO_FROM_ARMY,
+  ADD_HERO_TO_ARMY
+} from '../../store/actions'
+import * as ROUTES from '../../constants/routes'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,10 +63,21 @@ function HeroDetails(props) {
   const { hero } = props
   const classes = useStyles()
   const { id } = useParams()
+  const history = useHistory()
 
   useEffect(() => {
     props.setCurrentHero(id)
-  })
+  }, [hero])
+
+  const deleteHero = () => {
+    props.deleteHero(id)
+    history.push(ROUTES.WELCOME)
+  }
+
+  const handleHeroAction = () => {
+    if (hero.isSelected) props.removeHeroFromMyArmy(id)
+    else props.addHeroToMyArmy(id)
+  }
 
   return (
     <>
@@ -77,7 +94,10 @@ function HeroDetails(props) {
             <div className={classes.heroDataContainer}>
               <div className={classes.heroNameContainer}>
                 <div className={classes.heroName}>{hero.name}</div>
-                <DeleteForeverIcon className={classes.trashIcon} />
+                <DeleteForeverIcon
+                  className={classes.trashIcon}
+                  onClick={deleteHero}
+                />
               </div>
               <div>
                 {hero.skill}
@@ -90,6 +110,7 @@ function HeroDetails(props) {
             className={classes.buttonAddRemove}
             variant="outlined"
             color="primary"
+            onClick={handleHeroAction}
           >
             {hero.isSelected ? 'Remove from army' : 'Add to army'}
           </Button>
@@ -108,7 +129,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToState = dispatch => {
   return {
-    setCurrentHero: id => dispatch(SET_CURRENT_HERO({ payload: id }))
+    setCurrentHero: id => dispatch(SET_CURRENT_HERO({ payload: id })),
+    deleteHero: id => dispatch(DELETE_HERO({ payload: id })),
+    removeHeroFromMyArmy: id =>
+      dispatch(REMOVE_HERO_FROM_ARMY({ payload: id })),
+    addHeroToMyArmy: id => dispatch(ADD_HERO_TO_ARMY({ payload: id }))
   }
 }
 
