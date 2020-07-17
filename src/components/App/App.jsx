@@ -17,7 +17,7 @@ function App(props) {
   useEffect(() => {
     props.fetchHeroes()
   }, [])
-  
+
   useEffect(() => {
     if (appMessageContent) {
       setOpenSnackBar(true)

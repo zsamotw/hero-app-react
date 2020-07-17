@@ -71,24 +71,27 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function HeroDetails(props) {
-  const { heroes } = props
   const [hero, setHero] = useState({})
-  const classes = useStyles()
+  const { heroes } = props
+
   const { id } = useParams()
+  const idFromRoute = parseInt(id, 10)
   const history = useHistory()
 
+  const classes = useStyles()
+
   useEffect(() => {
-    setHero(heroes.find(h => h.id === id))
-  }, [heroes, id, props])
+    setHero(heroes.find(h => h.id === idFromRoute))
+  }, [props, heroes, idFromRoute])
 
   const deleteHero = () => {
-    props.deleteHero(id)
+    props.deleteHero(hero.id)
     history.push(ROUTES.HEROES)
   }
 
   const handleHeroAction = () => {
-    if (hero.isSelected) props.unselectHero(id)
-    else props.selectHero(id)
+    if (hero.isSelected) props.unselectHero(hero.id)
+    else props.selectHero(hero.id)
   }
 
   const handleClickBack = () => history.goBack()

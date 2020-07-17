@@ -4,7 +4,7 @@ import { ofType } from 'redux-observable'
 import { ajax } from 'rxjs/ajax'
 import { FETCH_HEROES, SET_HEROES, SET_APP_MESSAGE } from './actions'
 
-const url = 'https://run.mocky.io/v3/696dc2ce-6840-4c36-ab01-89d076aa69cf'
+const url = 'https://run.mocky.io/v3/7ea0ccf7-89bb-4095-bfbb-af7358646ebf'
 
 const fetchHeroesEpic = action$ =>
   action$.pipe(

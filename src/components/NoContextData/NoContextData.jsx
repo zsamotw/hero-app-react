@@ -22,9 +22,10 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function NoContextData() {
+  const history = useHistory()
+
   const theme = useTheme()
   const classes = useStyles(theme)
-  const history = useHistory()
 
   const handleNavigateHeroesList = () => {
     history.push(ROUTES.HEROES)

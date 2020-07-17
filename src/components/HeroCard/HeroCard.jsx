@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Paper from '@material-ui/core/Paper'
 import Avatar from '@material-ui/core/Avatar'
 import { makeStyles } from '@material-ui/core/styles'
@@ -41,11 +41,12 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function HeroCard(props) {
+  const [heroDescription, setHeroDescription] = useState('')
+  const { hero } = props
+
   const history = useHistory()
 
-  const { hero } = props
   const classes = useStyles()
-  const [heroDescription , setHeroDescription] = useState('')
 
   const navigateHeroDetails = () => history.push(`/${hero.id}`)
 

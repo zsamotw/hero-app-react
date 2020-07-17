@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import React, { useContext } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
@@ -27,13 +27,13 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function MenuAppBar() {
-  const theme = useTheme()
-  const classes = useStyles(theme)
-
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
 
   const history = useHistory()
+
+  const theme = useTheme()
+  const classes = useStyles(theme)
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget)

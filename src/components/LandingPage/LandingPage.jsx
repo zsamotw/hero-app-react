@@ -17,7 +17,7 @@ const LandingPage = () => {
         <Grid item xs={10}>
           <Switch>
             <Route exact path="/selected">
-              <HeroesList onlySelected={true} />
+              <HeroesList onlySelected />
             </Route>
             <Route exact path="/create">
               <HeroCreate />

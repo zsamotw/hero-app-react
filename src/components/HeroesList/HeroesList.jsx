@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import { getHeroes, getSelectedHeroes } from '../../store/selectors'
-import { FETCH_HEROES } from '../../store/actions'
 import HeroCard from '../HeroCard/HeroCard'
 
 const useStyles = makeStyles(theme => ({
@@ -15,8 +14,9 @@ const useStyles = makeStyles(theme => ({
 
 function HeroesList(props) {
   const { heroes, selectedHeroes, onlySelected } = props
-  const classes = useStyles()
   const heroesToDisplay = onlySelected ? selectedHeroes : heroes
+
+  const classes = useStyles()
 
   return (
     <>
