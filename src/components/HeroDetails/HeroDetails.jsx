@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Avatar from '@material-ui/core/Avatar'
 import { makeStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
-import { getCurrentHero } from '../../store/selectors'
+import { getHeroes } from '../../store/selectors'
 import NoContextData from '../NoContextData'
 import {
-  SET_CURRENT_HERO,
   DELETE_HERO,
-  REMOVE_HERO_FROM_ARMY,
-  ADD_HERO_TO_ARMY
+  UNSELECT_HERO,
+  SELECT_HERO
 } from '../../store/actions'
 import * as ROUTES from '../../constants/routes'
 
@@ -29,13 +28,16 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row'
   },
   avatarContainer: {
-    minWidth: '20%',
+    width: '20%',
     display: 'flex',
     justifyContent: 'center'
   },
   large: {
     width: theme.spacing(10),
     height: theme.spacing(10)
+  },
+  heroDataContainer: {
+    width: '80%'
   },
   heroNameContainer: {
     display: 'flex',
@@ -66,14 +68,15 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function HeroDetails(props) {
-  const { hero } = props
+  const { heroes } = props
+  const [hero, setHero] = useState({})
   const classes = useStyles()
   const { id } = useParams()
   const history = useHistory()
 
   useEffect(() => {
-    props.setCurrentHero(id)
-  }, [hero])
+    setHero(heroes.find(h => h.id === id))
+  }, [heroes, id, props])
 
   const deleteHero = () => {
     props.deleteHero(id)
@@ -81,8 +84,8 @@ function HeroDetails(props) {
   }
 
   const handleHeroAction = () => {
-    if (hero.isSelected) props.removeHeroFromMyArmy(id)
-    else props.addHeroToMyArmy(id)
+    if (hero.isSelected) props.unselectHero(id)
+    else props.selectHero(id)
   }
 
   const handleClickBack = () => history.goBack()
@@ -141,17 +144,15 @@ function HeroDetails(props) {
 }
 
 const mapStateToProps = state => {
-  const hero = getCurrentHero(state)
-  return { hero }
+  const heroes = getHeroes(state)
+  return { heroes }
 }
 
 const mapDispatchToState = dispatch => {
   return {
-    setCurrentHero: id => dispatch(SET_CURRENT_HERO({ payload: id })),
     deleteHero: id => dispatch(DELETE_HERO({ payload: id })),
-    removeHeroFromMyArmy: id =>
-      dispatch(REMOVE_HERO_FROM_ARMY({ payload: id })),
-    addHeroToMyArmy: id => dispatch(ADD_HERO_TO_ARMY({ payload: id }))
+    unselectHero: id => dispatch(UNSELECT_HERO({ payload: id })),
+    selectHero: id => dispatch(SELECT_HERO({ payload: id }))
   }
 }
 
