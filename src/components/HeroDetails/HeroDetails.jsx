@@ -5,13 +5,10 @@ import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+import Tooltip from '@material-ui/core/Tooltip'
 import { getHeroes } from '../../store/selectors'
 import NoContextData from '../NoContextData'
-import {
-  DELETE_HERO,
-  UNSELECT_HERO,
-  SELECT_HERO
-} from '../../store/actions'
+import { DELETE_HERO, UNSELECT_HERO, SELECT_HERO } from '../../store/actions'
 import * as ROUTES from '../../constants/routes'
 
 const useStyles = makeStyles(theme => ({
@@ -51,7 +48,10 @@ const useStyles = makeStyles(theme => ({
   trashIcon: {
     marginLeft: '30px',
     color: theme.palette.error.main,
-    cursor: 'pointer'
+    cursor: 'pointer',
+    '&:hover': {
+      color: theme.palette.error.dark
+    }
   },
   heroName: {
     fontWeight: 600,
@@ -120,10 +120,12 @@ function HeroDetails(props) {
                   >
                     Back
                   </Button>
-                  <DeleteForeverIcon
-                    className={classes.trashIcon}
-                    onClick={deleteHero}
-                  />
+                  <Tooltip title="Delete hero">
+                    <DeleteForeverIcon
+                      className={classes.trashIcon}
+                      onClick={deleteHero}
+                    />
+                  </Tooltip>
                 </div>
               </div>
               <div>
