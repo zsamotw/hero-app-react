@@ -60,6 +60,9 @@ const useStyles = makeStyles(theme => ({
   heroDescription: {
     marginTop: theme.spacing(3)
   },
+  heroSkill: {
+    fontWeight: 600
+  },
   buttonAddRemove: {
     marginTop: '30px',
     maxWidth: '200px',
@@ -121,7 +124,7 @@ function HeroDetails(props) {
                 </div>
               </div>
               <div>
-                {hero.skill}
+                <span className={classes.heroSkill}>{hero.skill}</span>
                 <span>. This is what I like.</span>
               </div>
               <div className={classes.heroDescription}>{hero.description}</div>

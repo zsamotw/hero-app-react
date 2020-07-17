@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Paper from '@material-ui/core/Paper'
 import Avatar from '@material-ui/core/Avatar'
 import { makeStyles } from '@material-ui/core/styles'
@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles(theme => ({
   root: {
     width: '45%',
+    height: '100px',
     padding: theme.spacing(2),
     paddingLeft: 0,
     color: theme.palette.text.secondary,
@@ -33,6 +34,9 @@ const useStyles = makeStyles(theme => ({
   },
   heroDescription: {
     marginTop: theme.spacing(2)
+  },
+  heroSkill: {
+    fontWeight: 600
   }
 }))
 
@@ -41,10 +45,18 @@ export default function HeroCard(props) {
 
   const { hero } = props
   const classes = useStyles()
+  const [heroDescription , setHeroDescription] = useState('')
 
-  function navigateHeroDetails() {
-    history.push(`/${hero.id}`)
-  }
+  const navigateHeroDetails = () => history.push(`/${hero.id}`)
+
+  const truncateDescription = description =>
+    description.length > 100
+      ? description.slice(0, 100).concat('(...)')
+      : description
+
+  useEffect(() => {
+    setHeroDescription(truncateDescription(hero.description))
+  }, [hero])
 
   return (
     <Paper className={classes.root} onClick={navigateHeroDetails}>
@@ -55,9 +67,9 @@ export default function HeroCard(props) {
         <div className={classes.heroName}>{hero.name}</div>
         <div>
           <span>Really good in </span>
-          {hero.skill}
+          <span className={classes.heroSkill}>{hero.skill}</span>
         </div>
-        <div className={classes.heroDescription}>{hero.description}</div>
+        <div className={classes.heroDescription}>{heroDescription}</div>
       </div>
     </Paper>
   )
