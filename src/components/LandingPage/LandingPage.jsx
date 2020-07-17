@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid'
 import MenuAppBar from '../MenuAppBar'
 import HeroesList from '../HeroesList'
 import HeroDetails from '../HeroDetails'
+import HeroCreate from '../HeroCreate'
 
 const LandingPage = () => {
   const { path } = useRouteMatch()
@@ -17,6 +18,9 @@ const LandingPage = () => {
           <Switch>
             <Route exact path="/selected">
               <HeroesList onlySelected={true} />
+            </Route>
+            <Route exact path="/create">
+              <HeroCreate />
             </Route>
             <Route path="/:id">
               <HeroDetails />

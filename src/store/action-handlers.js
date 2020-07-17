@@ -16,6 +16,13 @@ export const handleDeleteHero = (state, id) => {
   return nextState
 }
 
+export const handleCreateHero = (state, hero) => {
+  const message = { content: 'Hero has been created', type: 'info' }
+  const heroes = state.get('heroes').concat([hero])
+  const nextState = state.set('heroes', heroes).set('appMessage', message)
+  return nextState
+}
+
 export const handleHeroAction = (state, id, type) => {
   const isSelected = type === 'add'
   const content =

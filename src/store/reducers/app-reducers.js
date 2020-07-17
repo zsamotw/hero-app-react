@@ -5,6 +5,7 @@ import {
   handleSetAppMessage,
   handleSetCurrentHero,
   handleDeleteHero,
+  handleCreateHero,
   handleHeroAction
 } from '../action-handlers'
 import {
@@ -12,12 +13,13 @@ import {
   SET_HEROES,
   SET_CURRENT_HERO,
   DELETE_HERO,
+  CREATE_HERO,
   REMOVE_HERO_FROM_ARMY,
   ADD_HERO_TO_ARMY
 } from '../actions'
 
 const makeInitialState = Record({
-  heroes: List([]),
+  heroes: List(),
   currentHero: null,
   appMessage: { content: '', type: null }
 })
@@ -33,6 +35,9 @@ const appReducers = createReducer(initialState, {
   },
   [DELETE_HERO.type]: (state, action) => {
     return handleDeleteHero(state, action.payload)
+  },
+  [CREATE_HERO.type]: (state, action) => {
+    return handleCreateHero(state, action.payload)
   },
   [REMOVE_HERO_FROM_ARMY.type]: (state, action) => {
     return handleHeroAction(state, action.payload, 'remove')

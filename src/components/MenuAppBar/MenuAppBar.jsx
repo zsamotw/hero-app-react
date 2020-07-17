@@ -49,6 +49,11 @@ function MenuAppBar() {
     setAnchorEl(null)
   }
 
+  const handleNavigateHeroCreate = () => {
+    history.push(ROUTES.CREATE)
+    setAnchorEl(null)
+  }
+
   const handleClose = () => {
     setAnchorEl(null)
   }
@@ -82,6 +87,9 @@ function MenuAppBar() {
             >
               <MenuItem onClick={handleNavigateHeroesList}>Heroes</MenuItem>
               <MenuItem onClick={handleNavigateArmyList}>My army</MenuItem>
+              <MenuItem onClick={handleNavigateHeroCreate}>
+                Create hero
+              </MenuItem>
             </Menu>
           </div>
         </Toolbar>
