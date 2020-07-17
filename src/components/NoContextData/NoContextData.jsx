@@ -33,7 +33,7 @@ export default function NoContextData() {
 
   return (
     <div className={classes.root}>
-      <div className={classes.alert}>Ooops. No data to display.</div>
+      <div className={classes.alert}>Oops. No data to display.</div>
       <div>
         <Button
           variant="outlined"

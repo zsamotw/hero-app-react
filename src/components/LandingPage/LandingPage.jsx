@@ -6,33 +6,40 @@ import HeroesList from '../HeroesList'
 import HeroDetails from '../HeroDetails'
 import HeroCreate from '../HeroCreate'
 
-const LandingPage = () => {
+export default function LandingPage() {
   const { path } = useRouteMatch()
 
   return (
-    <div>
+    <>
       <AppTopBar />
-      <Grid container>
-        <Grid xs={1} />
-        <Grid item xs={10}>
-          <Switch>
-            <Route exact path="/selected">
-              <HeroesList onlySelected />
-            </Route>
-            <Route exact path="/create">
-              <HeroCreate />
-            </Route>
-            <Route path="/:id">
-              <HeroDetails />
-            </Route>
-            <Route exact path={path}>
-              <HeroesList onlySelected={false} />
-            </Route>
-          </Switch>
-        </Grid>
-      </Grid>
-    </div>
+      <Layout>
+        <Switch>
+          <Route exact path="/selected">
+            <HeroesList onlySelected />
+          </Route>
+          <Route exact path="/create">
+            <HeroCreate />
+          </Route>
+          <Route path="/:id">
+            <HeroDetails />
+          </Route>
+          <Route exact path={path}>
+            <HeroesList onlySelected={false} />
+          </Route>
+        </Switch>
+      </Layout>
+    </>
   )
 }
 
-export default LandingPage
+const Layout = props => {
+  const { children } = props
+  return (
+    <Grid container>
+      <Grid xs={1} />
+      <Grid item xs={10}>
+        {children}
+      </Grid>
+    </Grid>
+  )
+}
