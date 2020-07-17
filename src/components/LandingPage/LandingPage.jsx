@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
-import MenuAppBar from '../MenuAppBar'
+import AppTopBar from '../AppTopBar'
 import HeroesList from '../HeroesList'
 import HeroDetails from '../HeroDetails'
 import HeroCreate from '../HeroCreate'
@@ -11,7 +11,7 @@ const LandingPage = () => {
 
   return (
     <div>
-      <MenuAppBar />
+      <AppTopBar />
       <Grid container>
         <Grid xs={1} />
         <Grid item xs={10}>

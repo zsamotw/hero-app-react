@@ -27,14 +27,20 @@ const useStyles = makeStyles(theme => ({
   avatarContainer: {
     width: '20%',
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    }
   },
   large: {
     width: theme.spacing(10),
     height: theme.spacing(10)
   },
   heroDataContainer: {
-    width: '80%'
+    width: '80%',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%'
+    }
   },
   heroNameContainer: {
     display: 'flex',
@@ -64,7 +70,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600
   },
   buttonAddRemove: {
-    marginTop: '30px',
+    marginTop: '60px',
     maxWidth: '200px',
     alignSelf: 'flex-end'
   }
