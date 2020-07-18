@@ -7,6 +7,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
+import { getSelectedHeroesCount } from '../../store/selectors'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,6 +37,11 @@ const useStyles = makeStyles(theme => ({
       color: theme.palette.secondary.light
     }
   },
+  selectedHeroesCount: {
+    fontSize: '13px',
+    fontWeight: 600,
+    paddingLeft: '7px'
+  },
   avatar: {
     width: theme.spacing(5),
     height: theme.spacing(5),
@@ -44,9 +50,10 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function AppMenu() {
+function AppMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
+  const { selectedHeroesCount } = props
 
   const history = useHistory()
 
@@ -83,7 +90,12 @@ function AppMenu() {
           Heroes
         </Link>
         <Link to={ROUTES.SELECTED} className={classes.link}>
-          Army
+          <span>Army</span>
+          {selectedHeroesCount > 0 ? (
+            <span className={classes.selectedHeroesCount}>
+              {selectedHeroesCount}
+            </span>
+          ) : null}
         </Link>
         <Link to={ROUTES.CREATE} className={classes.link}>
           Create hero
@@ -105,7 +117,14 @@ function AppMenu() {
           onClose={handleClose}
         >
           <MenuItem onClick={handleNavigateHeroesList}>Heroes</MenuItem>
-          <MenuItem onClick={handleNavigateArmyList}>Army</MenuItem>
+          <MenuItem onClick={handleNavigateArmyList}>
+            <span>Army</span>
+            {selectedHeroesCount > 0 ? (
+              <span className={classes.selectedHeroesCount}>
+                {selectedHeroesCount}
+              </span>
+            ) : null}
+          </MenuItem>
           <MenuItem onClick={handleNavigateHeroCreate}>Create hero</MenuItem>
         </Menu>
       </div>
@@ -113,8 +132,9 @@ function AppMenu() {
   )
 }
 
-const mapDispatchToState = dispatch => {
-  return {}
+const mapStateToProps = state => {
+  const selectedHeroesCount = getSelectedHeroesCount(state)
+  return { selectedHeroesCount }
 }
 
-export default connect(null, mapDispatchToState)(AppMenu)
+export default connect(mapStateToProps)(AppMenu)
