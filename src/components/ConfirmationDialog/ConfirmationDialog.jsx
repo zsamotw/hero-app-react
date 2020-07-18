@@ -8,7 +8,15 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 export default function ConfirmationDialog(props) {
   const [open, setOpen] = React.useState(false)
-  const { isOpen, onOk, onCancel, okButtonContent, cancelButtonContent, content, title } = props
+  const {
+    isOpen,
+    onOk,
+    onCancel,
+    okButtonContent,
+    cancelButtonContent,
+    content,
+    title
+  } = props
 
   useEffect(() => {
     setOpen(isOpen)
@@ -20,10 +28,17 @@ export default function ConfirmationDialog(props) {
 
   return (
     <div>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">{content}</DialogContentText>
+          <DialogContentText id="alert-dialog-description">
+            {content}
+          </DialogContentText>
         </DialogContent>
 
         <DialogActions>

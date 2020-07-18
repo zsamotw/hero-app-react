@@ -8,7 +8,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import Tooltip from '@material-ui/core/Tooltip'
 import { getHeroes } from '../../store/selectors'
 import NoContextData from '../NoContextData'
-import ConFirmationDialog from '../ConfirmationDialog'
+import ConfirmationDialog from '../ConfirmationDialog'
 import { DELETE_HERO, UNSELECT_HERO, SELECT_HERO } from '../../store/actions'
 import * as ROUTES from '../../constants/routes'
 
@@ -114,17 +114,29 @@ function HeroDetails(props) {
         <div className={classes.root}>
           <div className={classes.hero}>
             <div className={classes.avatarContainer}>
-              <Avatar className={classes.large} alt={hero.name} src={hero.photo} />
+              <Avatar
+                className={classes.large}
+                alt={hero.name}
+                src={hero.photo}
+              />
             </div>
             <div className={classes.heroDataContainer}>
               <div className={classes.heroNameContainer}>
                 <div className={classes.heroName}>{hero.name}</div>
                 <div className={classes.buttonsContainer}>
-                  <Button onClick={handleClickBack} variant="outlined" color="secondary" size="small">
+                  <Button
+                    onClick={handleClickBack}
+                    variant="outlined"
+                    color="secondary"
+                    size="small"
+                  >
                     Back
                   </Button>
                   <Tooltip title="Delete hero">
-                    <DeleteForeverIcon className={classes.trashIcon} onClick={handleOpenDialog} />
+                    <DeleteForeverIcon
+                      className={classes.trashIcon}
+                      onClick={handleOpenDialog}
+                    />
                   </Tooltip>
                 </div>
               </div>
@@ -135,10 +147,23 @@ function HeroDetails(props) {
               <div className={classes.heroDescription}>{hero.description}</div>
             </div>
           </div>
-          <Button className={classes.buttonAddRemove} variant="outlined" color="primary" onClick={handleHeroAction}>
+          <Button
+            className={classes.buttonAddRemove}
+            variant="outlined"
+            color="primary"
+            onClick={handleHeroAction}
+          >
             {hero.isSelected ? 'Remove from army' : 'Add to army'}
           </Button>
-          <ConFirmationDialog isOpen={isDialogOpen} onOk={handleDeleteHero} onCancel={handleCloseDialog} okButtonContent="Delete Hero" cancelButtonContent="Cancel" title="Delete hero" content="Should this hero be sent to nothingness" />
+          <ConfirmationDialog
+            isOpen={isDialogOpen}
+            onOk={handleDeleteHero}
+            onCancel={handleCloseDialog}
+            okButtonContent="Delete Hero"
+            cancelButtonContent="Cancel"
+            title="Delete hero"
+            content="Should this hero be sent to nothingness"
+          />
         </div>
       ) : (
         <NoContextData />
