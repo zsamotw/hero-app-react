@@ -42,7 +42,7 @@ const CreateHeroFormBase = props => {
 
   const onSubmit = () => {
     try {
-      const id = Math.floor(Math.random() * Math.floor(Number.MAX_VALUE))
+      const id = new Date().valueOf() //Math.floor(Math.random() * Math.floor(Number.MAX_VALUE))
       const photo = 'http://source.unsplash.com/random/600x400?jedi'
       const isSelected = false
       const hero = { id, name, skill, description, photo, isSelected }
