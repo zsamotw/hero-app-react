@@ -10,12 +10,38 @@ import { SET_APP_MESSAGE, FETCH_HEROES } from '../../store/actions'
 
 function App(props) {
   const [openSnackBar, setOpenSnackBar] = useState(false)
+  const lastFetchHeroesDateStorageKey = 'lastFetchHeroesDate'
 
   const { appMessage } = props
   const { content: appMessageContent } = appMessage
 
+  const dateDiffInDays = (date1, date2) => {
+    const millisecondsPerDay = 1000 * 60 * 60 * 24
+    const utc1 = Date.UTC(
+      date1.getFullYear(),
+      date1.getMonth(),
+      date1.getDate()
+    )
+    const utc2 = Date.UTC(
+      date2.getFullYear(),
+      date2.getMonth(),
+      date2.getDate()
+    )
+
+    return Math.floor((utc2 - utc1) / millisecondsPerDay)
+  }
+
   useEffect(() => {
-    props.fetchHeroes()
+    const lastFetchHeroesDate = new Date(
+      localStorage.getItem(lastFetchHeroesDateStorageKey)
+    )
+    const now = new Date()
+    const dateDiff = dateDiffInDays(lastFetchHeroesDate, now)
+    const maxDayDiff = 3
+    if (lastFetchHeroesDate === null && dateDiff > maxDayDiff) {
+      localStorage.setItem(lastFetchHeroesDateStorageKey, new Date())
+      props.fetchHeroes()
+    }
   }, [])
 
   useEffect(() => {

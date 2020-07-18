@@ -1,12 +1,11 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { Record, List } from 'immutable'
 import {
   handleSetHeroes,
   handleSetAppMessage,
   handleDeleteHero,
   handleCreateHero,
   handleHeroAction
-} from '../action-handlers'
+} from './action-handlers'
 import {
   SET_APP_MESSAGE,
   SET_HEROES,
@@ -14,14 +13,10 @@ import {
   CREATE_HERO,
   UNSELECT_HERO,
   SELECT_HERO
-} from '../actions'
+} from './actions'
+import { loadState } from './store-utils'
 
-const makeInitialState = Record({
-  heroes: List(),
-  appMessage: { content: '', type: null }
-})
-
-const initialState = makeInitialState()
+const initialState = loadState()
 
 const appReducers = createReducer(initialState, {
   [SET_HEROES.type]: (state, action) => {
