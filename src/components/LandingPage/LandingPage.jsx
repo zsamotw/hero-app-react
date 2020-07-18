@@ -36,7 +36,7 @@ const Layout = props => {
   const { children } = props
   return (
     <Grid container>
-      <Grid xs={1} />
+      <Grid item xs={1} />
       <Grid item xs={10}>
         {children}
       </Grid>
