@@ -32,13 +32,14 @@ function App(props) {
   }
 
   useEffect(() => {
-    const lastFetchHeroesDate = new Date(
-      localStorage.getItem(lastFetchHeroesDateStorageKey)
+    const savedLastFetchHeroDate = localStorage.getItem(
+      lastFetchHeroesDateStorageKey
     )
+    const lastFetchHeroesDate = new Date(savedLastFetchHeroDate)
     const now = new Date()
     const dateDiff = dateDiffInDays(lastFetchHeroesDate, now)
     const maxDayDiff = 3
-    if (lastFetchHeroesDate === null && dateDiff > maxDayDiff) {
+    if (savedLastFetchHeroDate === null && dateDiff > maxDayDiff) {
       localStorage.setItem(lastFetchHeroesDateStorageKey, new Date())
       props.fetchHeroes()
     }
@@ -55,7 +56,7 @@ function App(props) {
       return
     }
     setOpenSnackBar(false)
-    props.setAppMessage({ content: '', type: null })
+    props.setAppMessage({ content: '', type: '' })
   }
 
   return (
@@ -72,7 +73,7 @@ function App(props) {
         autoHideDuration={3000}
         onClose={handleCloseSnackBar}
       >
-        <Alert onClose={handleCloseSnackBar} severity={appMessage.status}>
+        <Alert onClose={handleCloseSnackBar} severity={appMessage.type}>
           {appMessage.content}
         </Alert>
       </Snackbar>

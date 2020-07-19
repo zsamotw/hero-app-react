@@ -4,7 +4,7 @@ export const heroesStateStorageKey = 'heroesState'
 const makeInitialState = heroes =>
   Record({
     heroes: List(heroes),
-    appMessage: { content: '', type: null }
+    appMessage: { content: '', type: '' }
   })()
 
 export const loadState = () => {
@@ -23,8 +23,6 @@ export const loadState = () => {
   }
 }
 export const saveState = state => {
-  try {
-    const serializedState = JSON.stringify(state)
-    localStorage.setItem(heroesStateStorageKey, serializedState)
-  } catch (err) { }
+  const serializedState = JSON.stringify(state)
+  localStorage.setItem(heroesStateStorageKey, serializedState)
 }
