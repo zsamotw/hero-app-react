@@ -4,7 +4,7 @@ import { of } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
 import { FETCH_HEROES, SET_HEROES, SET_APP_MESSAGE } from './actions'
 
-const url = 'https://run.mocky.io/v3/7ea0ccf7-89bb-4095-bfbb-af7358646ebf'
+const url = 'https://run.mocky.io/v3/3dcd4aa4-baec-4b80-b940-8e22c7d53a22'
 
 const fetchHeroesEpic = action$ =>
   action$.pipe(

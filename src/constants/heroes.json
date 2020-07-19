@@ -10,7 +10,7 @@
   {
     "id": 2,
     "name": "Tomasz",
-    "skill": "Chrysopoeia",
+    "skill": "Activation and Deactivation",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "photo": "http://source.unsplash.com/random/600x400?jedi",
     "isSelected": false
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "name": "Anna",
-    "skill": "Chrysopoeia",
+    "skill": "Cloning",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "photo": "http://source.unsplash.com/random/600x400?jedi",
     "isSelected": false
@@ -26,7 +26,7 @@
   {
     "id": 4,
     "name": "Zenon",
-    "skill": "Chrysopoeia",
+    "skill": "Electrokinesis",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "photo": "http://source.unsplash.com/random/600x400?jedi",
     "isSelected": false
@@ -34,7 +34,7 @@
   {
     "id": 5,
     "name": "Patryk",
-    "skill": "Chrysopoeia",
+    "skill": "Empathy",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "photo": "http://source.unsplash.com/random/600x400?jedi",
     "isSelected": false
@@ -42,7 +42,7 @@
   {
     "id": 6,
     "name": "Ryszard",
-    "skill": "Chrysopoeia",
+    "skill": "Hypnosis",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "photo": "http://source.unsplash.com/random/600x400?jedi",
     "isSelected": false
