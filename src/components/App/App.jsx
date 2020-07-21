@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Snackbar from '@material-ui/core/Snackbar'
 import * as ROUTES from '../../constants/routes'
+import MainPage from '../MainPage'
 import LandingPage from '../LandingPage'
 import Alert from '../Alert'
 import { getAppMessage } from '../../store/selectors'
 import { SET_APP_MESSAGE, FETCH_HEROES } from '../../store/actions'
+import NoContextData from '../NoContextData'
 
 function App(props) {
   const [openSnackBar, setOpenSnackBar] = useState(false)
@@ -62,7 +64,17 @@ function App(props) {
   return (
     <div>
       <Router>
-        <Route path={ROUTES.HEROES} component={LandingPage} />
+        <Switch>
+          <Route exact path={ROUTES.ROOT}>
+            <LandingPage />
+          </Route>
+          <Route path={ROUTES.HEROES}>
+            <MainPage />
+          </Route>
+          <Route>
+            <NoContextData description="404 heroes" />
+          </Route>
+        </Switch>
       </Router>
       <Snackbar
         anchorOrigin={{

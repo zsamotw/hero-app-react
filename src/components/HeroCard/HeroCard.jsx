@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper'
 import Avatar from '@material-ui/core/Avatar'
 import { makeStyles } from '@material-ui/core/styles'
 import { useHistory } from "react-router-dom";
+import * as ROUTES from '../../constants/routes'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -48,7 +49,7 @@ export default function HeroCard(props) {
 
   const classes = useStyles()
 
-  const navigateHeroDetails = () => history.push(`/${hero.id}`)
+  const navigateHeroDetails = () => history.push(`${ROUTES.HEROES}/${hero.id}`)
 
   const truncateDescription = description =>
     description.length > 100

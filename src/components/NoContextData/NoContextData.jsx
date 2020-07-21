@@ -21,8 +21,9 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function NoContextData() {
+export default function NoContextData(props) {
   const history = useHistory()
+  const { description } = props
 
   const theme = useTheme()
   const classes = useStyles(theme)
@@ -33,7 +34,7 @@ export default function NoContextData() {
 
   return (
     <div className={classes.root}>
-      <div className={classes.alert}>Oops. No data to display.</div>
+      <div className={classes.alert}>{description}</div>
       <div>
         <Button
           variant="outlined"

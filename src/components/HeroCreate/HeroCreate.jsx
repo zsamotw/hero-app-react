@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core'
 import { useForm } from 'react-hook-form'
 import { CREATE_HERO } from '../../store/actions'
 import AppInput from '../AppInput'
+import * as ROUTES from '../../constants/routes'
 
 export default function HeroCreate() {
   return (
@@ -42,13 +43,13 @@ const CreateHeroFormBase = props => {
 
   const onSubmit = () => {
     try {
-      const id = new Date().valueOf() //Math.floor(Math.random() * Math.floor(Number.MAX_VALUE))
+      const id = new Date().valueOf()
       const photo = 'http://source.unsplash.com/random/600x400?jedi'
       const isSelected = false
       const hero = { id, name, skill, description, photo, isSelected }
       props.createHero(hero)
       resetFormState()
-      history.push(`/${id}`)
+      history.push(`${ROUTES.HEROES}/${id}`)
     } catch (err) {
       setError(err)
     }

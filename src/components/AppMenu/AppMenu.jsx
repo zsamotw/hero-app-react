@@ -5,7 +5,7 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useRouteMatch } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
 import { getSelectedHeroesCount } from '../../store/selectors'
 
@@ -56,6 +56,7 @@ function AppMenu(props) {
   const { selectedHeroesCount } = props
 
   const history = useHistory()
+  const { url } = useRouteMatch()
 
   const theme = useTheme()
   const classes = useStyles(theme)
@@ -70,12 +71,12 @@ function AppMenu(props) {
   }
 
   const handleNavigateArmyList = () => {
-    history.push(ROUTES.SELECTED)
+    history.push(url + ROUTES.SELECTED)
     setAnchorEl(null)
   }
 
   const handleNavigateHeroCreate = () => {
-    history.push(ROUTES.CREATE)
+    history.push(url + ROUTES.CREATE)
     setAnchorEl(null)
   }
 
@@ -89,7 +90,7 @@ function AppMenu(props) {
         <Link to={ROUTES.HEROES} className={classes.link}>
           Heroes
         </Link>
-        <Link to={ROUTES.SELECTED} className={classes.link}>
+        <Link to={url + ROUTES.SELECTED} className={classes.link}>
           <span>Army</span>
           {selectedHeroesCount > 0 ? (
             <span className={classes.selectedHeroesCount}>
@@ -97,7 +98,7 @@ function AppMenu(props) {
             </span>
           ) : null}
         </Link>
-        <Link to={ROUTES.CREATE} className={classes.link}>
+        <Link to={url + ROUTES.CREATE} className={classes.link}>
           Create hero
         </Link>
       </div>

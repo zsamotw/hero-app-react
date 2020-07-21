@@ -166,7 +166,7 @@ function HeroDetails(props) {
           />
         </div>
       ) : (
-        <NoContextData />
+        <NoContextData description="Oops ... no hero to display" />
       )}
     </>
   )
