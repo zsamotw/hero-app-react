@@ -9,10 +9,8 @@ export const getSelectedHeroes = state => {
 }
 
 export const getSelectedHeroesCount = state => {
-  const selectedHeroesCount = state
-    .get('heroes')
-    .filter(hero => hero.isSelected).size
-  return selectedHeroesCount
+  const selectedHeroes = state.get('heroes').filter(hero => hero.isSelected)
+  return selectedHeroes.length || selectedHeroes.size
 }
 
 export const getAppMessage = state => {

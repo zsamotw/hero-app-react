@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
+import { Button } from '@material-ui/core'
 import * as ROUTES from '../../constants/routes'
 
 const useStyles = makeStyles(theme => ({
@@ -10,21 +10,14 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     flexDirection: 'column',
     width: '100%',
-    height: '80vh'
+    height: '100vh',
+    backgroundColor: theme.palette.primary.main
   },
   text: {
-    color: theme.palette.text.primary,
-    fontWidth: '600',
+    color: '#FFF',
+    fontWeight: '600',
     fontSize: theme.typography.display3.fontSize,
     marginBottom: '40px'
-  },
-  link: {
-    color: theme.palette.text.secondary,
-    textDecoration: 'none',
-    marginLeft: '20px',
-    '&:hover': {
-      color: theme.palette.secondary.light
-    }
   }
 }))
 
@@ -34,11 +27,11 @@ export default function LandingPage() {
 
   return (
     <div className={classes.root}>
-      <div className={classes.text}>Hello Foo with Hero</div>
+      <div className={classes.text}>Hello with Hero App</div>
       <div>
-        <Link className={classes.link} to={ROUTES.HEROES}>
+        <Button variant="outlined" color="secondary" href={ROUTES.HEROES}>
           Start your adventure
-        </Link>
+        </Button>
       </div>
     </div>
   )
